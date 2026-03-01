@@ -1,3 +1,115 @@
-sdfasdfasdf
-asdasdasdas
-asdasdasdasd
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workfront Kickstart Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo">WF</div>
+      <div class="header-text">
+        <h1>Workfront Kickstart Generator</h1>
+        <p>Build import-ready spreadsheets for Adobe Workfront</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Step Indicator -->
+    <nav class="steps-nav" aria-label="Progress">
+      <div class="step-item active" id="nav-step-1">
+        <div class="step-circle">1</div>
+        <span class="step-name">Select Objects</span>
+      </div>
+      <div class="step-connector" id="connector-1-2"></div>
+      <div class="step-item" id="nav-step-2">
+        <div class="step-circle">2</div>
+        <span class="step-name">Enter Data</span>
+      </div>
+      <div class="step-connector" id="connector-2-3"></div>
+      <div class="step-item" id="nav-step-3">
+        <div class="step-circle">3</div>
+        <span class="step-name">Download</span>
+      </div>
+    </nav>
+
+    <!-- Step 1: Select Objects -->
+    <section class="step-panel" id="panel-step-1">
+      <div class="panel-header">
+        <h2>Select Objects to Import</h2>
+        <p>Choose which types of records you want to include in your kickstart spreadsheet. You can select multiple types.</p>
+      </div>
+      <div class="objects-grid" id="objects-grid"></div>
+      <div class="panel-footer">
+        <span class="selection-count" id="selection-count">No objects selected</span>
+        <button class="btn btn-primary" id="btn-step1-next" disabled>
+          Continue to Data Entry <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 2: Enter Data -->
+    <section class="step-panel hidden" id="panel-step-2">
+      <div class="panel-header">
+        <h2>Enter Your Data</h2>
+        <p>Fill in the records you want to import. Required fields are marked with <span class="req-star">*</span>. Empty rows are skipped during export.</p>
+      </div>
+      <div class="tab-bar" id="tab-bar"></div>
+      <div class="tab-content" id="tab-content"></div>
+      <div class="panel-footer">
+        <button class="btn btn-secondary" id="btn-step2-back">← Back</button>
+        <button class="btn btn-primary" id="btn-step2-next">
+          Review &amp; Download <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Step 3: Download -->
+    <section class="step-panel hidden" id="panel-step-3">
+      <div class="panel-header">
+        <h2>Ready to Download</h2>
+        <p>Your kickstart spreadsheet is ready. Review the summary below, then download your file.</p>
+      </div>
+      <div class="summary-section" id="summary-section"></div>
+      <div class="download-section">
+        <div class="download-card">
+          <div class="download-icon">📊</div>
+          <h3>Workfront Kickstart Spreadsheet</h3>
+          <p>Excel format (.xlsx) — ready to import into Workfront</p>
+          <button class="btn btn-success btn-large" id="btn-download">
+            ↓ Download Spreadsheet
+          </button>
+        </div>
+        <div class="instructions-card">
+          <h4>How to Import in Workfront</h4>
+          <ol>
+            <li>Log in to your Workfront instance as an administrator</li>
+            <li>Navigate to <strong>Setup → System → Kick-Starts</strong></li>
+            <li>Click <strong>Import Data (Kick-Starts)</strong></li>
+            <li>Select your downloaded <code>.xlsx</code> file and click <strong>Upload</strong></li>
+            <li>Review the import results and resolve any errors</li>
+          </ol>
+          <p class="note">Note: ID reference fields (e.g., Project ID on Tasks) must contain valid Workfront object IDs from your instance.</p>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <button class="btn btn-secondary" id="btn-step3-back">← Back to Data Entry</button>
+        <button class="btn btn-secondary" id="btn-start-over">Start Over</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>Workfront Kickstart Generator — Not an official Adobe or Workfront product</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
